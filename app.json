@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "tidyfier-native-app",
+    "slug": "tidyfier-native-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "tidyfier-native-app"
+}
