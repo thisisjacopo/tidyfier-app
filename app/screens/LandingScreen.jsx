@@ -1,19 +1,18 @@
 //* IMPORTS
 import React from "react";
-import { Button } from "@rneui/base";
-import { View, Text } from "react-native";
+import { View, Button } from "react-native";
 import BigText from "../components/Texts/BigText";
+import MainBtn from "../components/Buttons/MainBtn";
 import { screensStyles } from "../styles/screensStyles";
 
-const LandingScreen = () => {
+const LandingScreen = ({ navigation }) => {
   //* VARIABLES
 
   return (
     <View style={screensStyles}>
       <BigText text={"Welcome"} />
-      <Button title="Sign up" />
-      <Button title="Login" />
-      
+      <MainBtn name="Sign up" onPress={() => navigation.navigate("Signup")} />
+      <MainBtn name="Login" />
     </View>
   );
 };
