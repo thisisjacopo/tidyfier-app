@@ -6,6 +6,7 @@ import MainBtn from "../components/Buttons/MainBtn";
 import { screensStyles } from "../styles/screensStyles";
 import { colors } from "../styles/colors";
 import { SignupContext } from "../context/SignupContext";
+import axios from "axios";
 
 const Signup = ({ navigation }) => {
   //* VARIABLES
@@ -20,12 +21,28 @@ const Signup = ({ navigation }) => {
     setPassword,
   } = useContext(SignupContext);
   const [disabled, setDisabled] = useState(true);
+  let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+
+  //* FUNCTIONS
+
+  const handleSubmitSignupForm = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/auth/signup",
+        { username, email, password, city },
+        { withCredentials: true }
+      );
+      console.log(response.data)
+    } catch (e) {
+      console.log(e, "error while submitting signup form");
+    }
+  };
 
   useEffect(() => {
     if (
       password.length > 4 &&
       username.length > 4 &&
-      email.length > 4 &&
+      regex.test(email) &&
       city.length > 2
     ) {
       setDisabled(!disabled);
@@ -71,6 +88,7 @@ const Signup = ({ navigation }) => {
             : `${colors.primaryBtn}`,
         }}
         name={"Signup"}
+        onPress={() => handleSubmitSignupForm()}
       />
     </View>
   );
