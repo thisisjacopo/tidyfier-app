@@ -5,14 +5,30 @@ import BigText from "../components/Texts/BigText";
 import MainBtn from "../components/Buttons/MainBtn";
 import { screensStyles } from "../styles/screensStyles";
 import { UserContext } from "../context/UserContext";
+import axios from "axios";
 
 const Home = ({ navigation }) => {
   //* VARIABLES
-  const { user } = useContext(UserContext);
+  const { user, setIsLoggedIn } = useContext(UserContext);
+
+  //* FUNCTIONS
+  const handleLogout = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/auth/logout", {
+        withCredentials: true,
+      });
+      console.log(response.data);
+      setIsLoggedIn(false);
+      navigation.navigate("Landing");
+    } catch (e) {
+      console.error(e, "error at handle logout funciton");
+    }
+  };
 
   return (
     <View style={screensStyles}>
       <BigText text={`Welcome Home ${user.username}`} />
+      <MainBtn name={"Logout"} onPress={() => handleLogout()} />
     </View>
   );
 };

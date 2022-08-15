@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 export const UserContext = React.createContext();
 
@@ -11,20 +10,7 @@ const UserProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
 
-  //* FUNCTIONS
-  const handleFetchUser = async () => {
-    console.log("inside fetch");
-    try {
-      const response = await axios.get("http://localhost:8000/auth/me");
-      console.log(response.data);
-    } catch (e) {
-      console.error(e, "error at fetching user function");
-    }
-  };
 
-  useEffect(() => {
-    handleFetchUser();
-  }, []);
   return (
     <UserContext.Provider
       value={{
@@ -40,7 +26,6 @@ const UserProvider = (props) => {
         setIsLoggedIn,
         user,
         setUser,
-        handleFetchUser,
       }}
     >
       {props.children}
