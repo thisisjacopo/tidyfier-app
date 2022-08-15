@@ -46,7 +46,7 @@ const Landing = ({ navigation }) => {
 
   return (
     <View style={screensStyles}>
-      <BigText text={"Welcome"} />
+      <BigText text={"Welcome to Tidyfier"} />
       <MainBtn name="Signup" onPress={() => navigation.navigate("Signup")} />
       <MainBtn name="Login" onPress={() => navigation.navigate("Login")} />
     </View>
