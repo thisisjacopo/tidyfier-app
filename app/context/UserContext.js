@@ -5,7 +5,7 @@ export const UserContext = React.createContext();
 const UserProvider = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [city, setCity] = useState("");
+
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -18,8 +18,6 @@ const UserProvider = (props) => {
         setUsername,
         email,
         setEmail,
-        city,
-        setCity,
         password,
         setPassword,
         isLoggedIn,

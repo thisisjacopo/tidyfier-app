@@ -15,8 +15,6 @@ const Signup = ({ navigation }) => {
     setUsername,
     email,
     setEmail,
-    city,
-    setCity,
     password,
     setPassword,
     setIsLoggedIn,
@@ -31,7 +29,7 @@ const Signup = ({ navigation }) => {
     try {
       const response = await axios.post(
         "http://localhost:8000/auth/signup",
-        { username, email, password, city },
+        { username, email, password },
         { withCredentials: true }
       );
       console.log(response.data);
@@ -44,15 +42,10 @@ const Signup = ({ navigation }) => {
   };
 
   useEffect(() => {
-    if (
-      password.length > 4 &&
-      username.length > 4 &&
-      regex.test(email) &&
-      city.length > 2
-    ) {
+    if (password.length > 4 && username.length > 4 && regex.test(email)) {
       setDisabled(false);
     }
-  }, [password, email, username, city]);
+  }, [password, email, username]);
 
   return (
     <View style={screensStyles}>
@@ -70,13 +63,6 @@ const Signup = ({ navigation }) => {
         autoCapitalize="none"
         placeholderTextColor="white"
         onChangeText={(value) => setUsername(value)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="City"
-        autoCapitalize="none"
-        placeholderTextColor="white"
-        onChangeText={(value) => setCity(value)}
       />
       <TextInput
         style={styles.input}
