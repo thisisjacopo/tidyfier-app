@@ -27,8 +27,15 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={screensStyles}>
-      <BigText text={`Welcome Home ${user.username}`} />
-      <MainBtn name={"Logout"} onPress={() => handleLogout()} />
+      <BigText
+        id="welcome-home-user-text"
+        text={`Welcome Home ${user.username}`}
+      />
+      <MainBtn
+        id="home-logout-btn"
+        name={"Logout"}
+        onPress={() => handleLogout()}
+      />
     </View>
   );
 };
