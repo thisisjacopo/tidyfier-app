@@ -1,5 +1,5 @@
 import render from "react-native-web/dist/cjs/exports/render";
-import Home, { handleLogout } from "../app/screens/Home";
+import Home from "../screens/Home";
 
 describe("Home screen", () => {
   it("renders", () => {
